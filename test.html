@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <script src="http://cdn.staticfile.org/angular.js/1.2.10/angular.min.js"></script>
+</head>
+<body>
+
+  <div ng-controller='MainController'>
+        <input type="text" ng-model="color" placeholder="Enter a color"/>   
+        <hello-world></hello-world>
+  </div>
+
+  <script>
+    var app = angular.module('myApp',[]);
+    app.controller('MainController',function(){});
+    app.directive('helloWorld',function(){
+     return {
+        scope: false,   //scope值不同，作用不同,true，{}，false.当为false时继承不隔离，当为true继承隔离，当{}不继承隔离
+        restrict: 'AE',
+        replace: true,
+        template: '<p style="background-color:{{color}}">Hello World</p>'      
+     }
+    });
+  </script>
+
+</body>
+</html>
